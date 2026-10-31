@@ -49,6 +49,10 @@ Across the traceroute sequence, the **Identification**, **Time to Live**, and **
 
 The IPv4 Identification field also showed a sequential pattern, increasing by one between successive datagrams.
 
+![IPv4 Traceroute Probe](screenshots/01-ipv4-traceroute-probe.png)
+
+![Traceroute TTL Pattern](screenshots/02-traceroute-ttl-pattern.png)
+
 ## IPv4 Fragmentation Analysis
 
 The trace was also used to examine how IPv4 handles datagrams that are divided into multiple fragments.
@@ -66,6 +70,10 @@ The subsequent fragments retained the same **Identification** value so they coul
 
 Wireshark indicated that the fragmented datagram was **reassembled in packet 181**. The final fragment was identified by a non-zero Fragment Offset together with the **More Fragments flag not being set**, indicating that no additional fragments followed.
 
+![IPv4 First Fragment](screenshots/03-ipv4-fragmentation-first-fragment.png)
+
+![IPv4 Final Fragment](screenshots/04-ipv4-fragmentation-last-fragment.png)
+
 ## IPv6 Header Analysis
 
 The second trace was used to examine an IPv6 datagram carrying a DNS AAAA request for `youtube.com`.
@@ -82,6 +90,8 @@ The IPv6 source and destination addresses were displayed using standard compress
 
 The **Flow Label** identifies packets that may belong to the same traffic flow, while the **Next Header** field specifies the protocol carried in the IPv6 payload. In this datagram, the payload was delivered to UDP.
 
+![IPv6 Header Analysis](screenshots/05-ipv6-header-analysis.png)
+
 ## DNS AAAA Response Analysis
 
 The IPv6 trace was also used to inspect DNS resolution for `youtube.com` using an AAAA query.
@@ -96,6 +106,8 @@ The DNS response contained:
 Matching the transaction ID between the request and response confirmed that packet 27 was the correct DNS response associated with the AAAA query.
 
 This analysis demonstrated how Wireshark can be used to trace an IPv6 DNS request and identify the IPv6 address returned by the DNS server.
+
+![DNS AAAA Response](screenshots/06-dns-aaaa-response.png)
 
 ## Key Findings
 
